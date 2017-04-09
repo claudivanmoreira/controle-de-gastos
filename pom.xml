@@ -17,7 +17,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <commons-lang.version>2.6</commons-lang.version>
+        <commons-lang.version>3.5</commons-lang.version>
+        <yank.version>3.3.0</yank.version>
+        <junit.version>4.12</junit.version>
+        <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
+        <hsqldb.version>2.3.2</hsqldb.version>
     </properties>
     
 </project>
