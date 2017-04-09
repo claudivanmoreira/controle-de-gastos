@@ -25,14 +25,15 @@ public class CategoryDao extends AbstractDao<Category> {
         super(databaseUtils);
     }
 
-    public Long save(Category category) throws DatabaseAccessException {
+    public Category save(Category category) throws DatabaseAccessException {
         try {
             List<Object> returnedKeys = super.executeUpdateAndReturnGeneratedKeys(QueryNames.INSERT_CATEGORY, new Object[]{category.getName(), category.getType().toString()});
-            return ((Integer) returnedKeys.get(0)).longValue();
+            category.setId(((Integer) returnedKeys.get(0)).longValue());
+            return category;
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to persist Card.", ex);
+            throw new DatabaseAccessException("Error while trying to persist Category.", ex);
         } catch (Exception ex) {
-            throw new DatabaseAccessException("Generic error while trying to persist  Card.", ex);
+            throw new DatabaseAccessException("Generic error while trying to persist  Category.", ex);
         }
     }
 
@@ -40,9 +41,9 @@ public class CategoryDao extends AbstractDao<Category> {
         try {
             executeUpdate(QueryNames.UPDATE_CATEGORY, new Object[]{category.getName(), category.getType().toString(), category.getId()});
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to update Card.", ex);
+            throw new DatabaseAccessException("Error while trying to update Category.", ex);
         } catch (Exception ex) {
-            throw new DatabaseAccessException("Generic error while trying to update  Card.", ex);
+            throw new DatabaseAccessException("Generic error while trying to update  Category.", ex);
         }
     }
 
@@ -50,9 +51,9 @@ public class CategoryDao extends AbstractDao<Category> {
         try {
             super.executeUpdate(QueryNames.DELETE_CATEGORY, new Object[]{category.getId()});
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to delete Card.", ex);
+            throw new DatabaseAccessException("Error while trying to delete Category.", ex);
         } catch (Exception ex) {
-            throw new DatabaseAccessException("Generic error while trying to delete  Card.", ex);
+            throw new DatabaseAccessException("Generic error while trying to delete  Category.", ex);
         }
     }
 
@@ -60,7 +61,7 @@ public class CategoryDao extends AbstractDao<Category> {
         try {
             return super.select(QueryNames.SELECT_CATEGORY_BY_ID, new CategoryRowMapper(), categoryId);
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to find Card.", ex);
+            throw new DatabaseAccessException("Error while trying to find Category.", ex);
         } catch (EmptyResultException ex) {
             throw ex;
         }
@@ -70,7 +71,7 @@ public class CategoryDao extends AbstractDao<Category> {
         try {
             return super.selectAll(QueryNames.SELECT_ALL_CATEGORIES, new CategoryRowMapper(), new Object[]{});
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to find Card.", ex);
+            throw new DatabaseAccessException("Error while trying to find Category.", ex);
         } catch (EmptyResultException ex) {
             throw ex;
         }
@@ -80,7 +81,7 @@ public class CategoryDao extends AbstractDao<Category> {
         try {
             return super.select(sqlKey, new CategoryRowMapper(), parameters);
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to find Card.", ex);
+            throw new DatabaseAccessException("Error while trying to find Category.", ex);
         } catch (EmptyResultException ex) {
             throw ex;
         }
@@ -90,7 +91,7 @@ public class CategoryDao extends AbstractDao<Category> {
         try {
             return super.selectAll(sqlKey, new CategoryRowMapper(), parameters);
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to find Card.", ex);
+            throw new DatabaseAccessException("Error while trying to find Category.", ex);
         } catch (EmptyResultException ex) {
             throw ex;
         }

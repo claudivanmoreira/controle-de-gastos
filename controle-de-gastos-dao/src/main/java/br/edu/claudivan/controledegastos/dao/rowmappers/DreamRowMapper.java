@@ -20,7 +20,7 @@ public class DreamRowMapper implements RowMapper<Dream>{
     public Dream mapRow(ResultSet resultSet) throws SQLException {
         Dream dream = new Dream();
         dream.setId(resultSet.getLong("id"));
-        dream.setName(resultSet.getString("name"));
+        dream.setName(resultSet.getString("dream_name"));
         dream.setAmountValue(resultSet.getString("amount_value"));
         dream.setValueSaved(resultSet.getString("saved_value"));
         return dream;

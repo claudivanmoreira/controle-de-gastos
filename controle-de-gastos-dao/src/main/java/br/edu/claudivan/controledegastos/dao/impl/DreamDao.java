@@ -25,14 +25,15 @@ public class DreamDao extends AbstractDao<Dream> {
         super(databaseUtils);
     }
 
-    public Long save(Dream dream) throws DatabaseAccessException {
+    public Dream save(Dream dream) throws DatabaseAccessException {
         try {
             List<Object> returnedKeys = super.executeUpdateAndReturnGeneratedKeys(QueryNames.INSERT_DREAM, new Object[]{dream.getName(), dream.getAmountValue(), dream.getValueSaved()});
-            return ((Integer) returnedKeys.get(0)).longValue();
+            dream.setId(((Integer) returnedKeys.get(0)).longValue());
+            return dream;
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to persist Card.", ex);
+            throw new DatabaseAccessException("Error while trying to persist Dream.", ex);
         } catch (Exception ex) {
-            throw new DatabaseAccessException("Generic error while trying to persist  Card.", ex);
+            throw new DatabaseAccessException("Generic error while trying to persist  Dream.", ex);
         }
     }
 
@@ -40,9 +41,9 @@ public class DreamDao extends AbstractDao<Dream> {
         try {
             executeUpdate(QueryNames.UPDATE_DREAM, new Object[]{dream.getName(), dream.getAmountValue(), dream.getValueSaved(), dream.getId()});
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to update Card.", ex);
+            throw new DatabaseAccessException("Error while trying to update Dream.", ex);
         } catch (Exception ex) {
-            throw new DatabaseAccessException("Generic error while trying to update  Card.", ex);
+            throw new DatabaseAccessException("Generic error while trying to update  Dream.", ex);
         }
     }
 
@@ -50,9 +51,9 @@ public class DreamDao extends AbstractDao<Dream> {
         try {
             super.executeUpdate(QueryNames.DELETE_DREAM, new Object[]{dream.getId()});
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to delete Card.", ex);
+            throw new DatabaseAccessException("Error while trying to delete Dream.", ex);
         } catch (Exception ex) {
-            throw new DatabaseAccessException("Generic error while trying to delete  Card.", ex);
+            throw new DatabaseAccessException("Generic error while trying to delete  Dream.", ex);
         }
     }
 
@@ -60,7 +61,7 @@ public class DreamDao extends AbstractDao<Dream> {
         try {
             return super.select(QueryNames.SELECT_DREAM_BY_ID, new DreamRowMapper(), dreamId);
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to find Card.", ex);
+            throw new DatabaseAccessException("Error while trying to find Dream.", ex);
         } catch (EmptyResultException ex) {
             throw ex;
         }
@@ -70,7 +71,7 @@ public class DreamDao extends AbstractDao<Dream> {
         try {
             return super.selectAll(QueryNames.SELECT_ALL_DREAMS, new DreamRowMapper(), new Object[]{});
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to find Card.", ex);
+            throw new DatabaseAccessException("Error while trying to find Dream.", ex);
         } catch (EmptyResultException ex) {
             throw ex;
         }
@@ -80,7 +81,7 @@ public class DreamDao extends AbstractDao<Dream> {
         try {
             return super.select(queryName, new DreamRowMapper(), parameters);
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to find Card.", ex);
+            throw new DatabaseAccessException("Error while trying to find Dream.", ex);
         } catch (EmptyResultException ex) {
             throw ex;
         }
@@ -90,7 +91,7 @@ public class DreamDao extends AbstractDao<Dream> {
         try {
             return super.selectAll(sqlKey, new DreamRowMapper(), parameters);
         } catch (SQLException ex) {
-            throw new DatabaseAccessException("Error while trying to find Card.", ex);
+            throw new DatabaseAccessException("Error while trying to find Dream.", ex);
         } catch (EmptyResultException ex) {
             throw ex;
         }

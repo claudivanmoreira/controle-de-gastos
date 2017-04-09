@@ -20,7 +20,7 @@ public class CategoryRowMapper implements RowMapper<Category>{
     public Category mapRow(ResultSet resultSet) throws SQLException {
         Category category = new Category();
         category.setId(resultSet.getLong("id"));
-        category.setName(resultSet.getString("name"));
+        category.setName(resultSet.getString("category_name"));
         category.setType(Category.CategoryType.valueOf(resultSet.getString("category_type")));
         return category;
     }

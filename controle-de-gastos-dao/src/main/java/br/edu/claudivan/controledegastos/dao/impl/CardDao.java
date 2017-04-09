@@ -25,10 +25,11 @@ public class CardDao extends AbstractDao<Card> {
         super(databaseUtils);
     }
 
-    public Long save(Card card) throws DatabaseAccessException {
+    public Card save(Card card) throws DatabaseAccessException {
         try {
             List<Object> returnedKeys = super.executeUpdateAndReturnGeneratedKeys(QueryNames.INSERT_CARD, new Object[]{card.getName(), card.getFlagOfCard(), card.getLimit(), card.getInvoiceDueDate(), card.getInvoiceClosingDate()});
-            return ((Integer) returnedKeys.get(0)).longValue();
+            card.setId(((Integer) returnedKeys.get(0)).longValue());
+            return card;
         } catch (SQLException ex) {
             throw new DatabaseAccessException("Error while trying to persist Card.", ex);
         } catch (Exception ex) {

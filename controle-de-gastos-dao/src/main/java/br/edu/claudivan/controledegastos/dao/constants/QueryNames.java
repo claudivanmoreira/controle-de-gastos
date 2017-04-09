@@ -28,5 +28,23 @@ public class QueryNames {
     public static final String DELETE_DREAM = "query.delete.dream";
     public static final String SELECT_DREAM_BY_ID = "query.select.dream.by.id";
     public static final String SELECT_ALL_DREAMS = "query.select.all.dreams";
+    
+    
+    public static final String INSERT_CARD_EXPENSE = "query.insert.card.expense";
+    public static final String UPDATE_CARD_EXPENSE = "query.update.card.expense";
+    public static final String DELETE_CARD_EXPENSE = "query.delete.card.expense";
+    public static final String SELECT_CARD_EXPENSE_BY_ID = "query.select.card.expense.by.id";
+    public static final String SELECT_ALL_CARD_EXPENSES = "query.select.all.card.expense";
+    
+    public static final String INSERT_GENERAL_EXPENSE = "query.insert.general.expense";
+    public static final String UPDATE_GENERAL_EXPENSE = "query.update.general.expense";
+    public static final String DELETE_GENERAL_EXPENSE = "query.delete.general.expense";
+    public static final String SELECT_GENERAL_EXPENSE_BY_ID = "query.select.general.expense.by.id";
+    public static final String SELECT_ALL_GENERAL_EXPENSES = "query.select.all.general.expense";
 
+    public static final String INSERT_INCOME_EXPENSE = "query.insert.income.expense";
+    public static final String UPDATE_INCOME_EXPENSE = "query.update.income.expense";
+    public static final String DELETE_INCOME_EXPENSE = "query.delete.income.expense";
+    public static final String SELECT_INCOME_EXPENSE_BY_ID = "query.select.income.expense.by.id";
+    public static final String SELECT_ALL_INCOME_EXPENSES = "query.select.all.income.expense";
 }

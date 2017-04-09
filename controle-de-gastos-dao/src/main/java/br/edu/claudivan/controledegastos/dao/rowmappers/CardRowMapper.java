@@ -20,9 +20,9 @@ public class CardRowMapper implements RowMapper<Card>{
     public Card mapRow(ResultSet resultSet) throws SQLException {
         Card card = new Card();
         card.setId(resultSet.getLong("id"));
-        card.setName(resultSet.getString("name"));
+        card.setName(resultSet.getString("card_name"));
         card.setFlagOfCard(resultSet.getString("flag_of_card"));
-        card.setLimit(resultSet.getString("limit"));
+        card.setLimit(resultSet.getString("card_limit"));
         card.setInvoiceDueDate(resultSet.getString("invoice_due_date"));
         card.setInvoiceClosingDate(resultSet.getString("invoice_close_date"));
         return card;
